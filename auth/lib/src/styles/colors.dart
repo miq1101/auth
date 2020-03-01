@@ -5,5 +5,5 @@ class AppColors{
   Color primaryColor = Color(0xFF16BFBF);
   Color buttonColor = Color(0xFF1695bf);
   Color white = Color(0xFFFFFFFF);
-  Color black = Color(0x00000000);
+  Color black = Color(0xFF000000);
 }

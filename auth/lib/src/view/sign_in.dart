@@ -59,10 +59,12 @@ class _SignInState extends State<SignIn> {
             print(status.toString());
             _showDialog();
           }
+          if(status == FacebookLoginStatus.cancelledByUser){
+          }
           if (status == FacebookLoginStatus.loggedIn) {
             Buffer.token = facebookLoginResult
                 .accessToken.token;
-            _controller.navigateTo("/", context);
+            _controller.navigateAndReplaceTo("/", context);
           }
         },
       ),

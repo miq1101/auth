@@ -1,6 +1,7 @@
 import 'package:auth/src/utils/buffer.dart';
 import 'package:auth/src/view/home.dart';
 import 'package:auth/src/view/sign_in.dart';
+import 'package:auth/src/view/view_photo.dart';
 import 'package:flutter/material.dart';
 
 main(List<String> args) {
@@ -11,6 +12,7 @@ main(List<String> args) {
     routes: {
       "/": (context) => Home(),
       "signIn": (context) => SignIn(),
+      "photo": (context) => ViewPhoto(),
     },
   ));
 }

@@ -9,6 +9,10 @@ class Controller{
     _logic = Logic();
   }
 
+  navigateAndReplaceTo(String routeName,BuildContext context){
+    Navigator.pushReplacementNamed(context, routeName);
+  }
+
   navigateTo(String routeName,BuildContext context){
     Navigator.pushNamed(context, routeName);
   }
