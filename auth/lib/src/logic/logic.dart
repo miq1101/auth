@@ -1,6 +1,7 @@
 import 'package:auth/src/model/fb_user.dart';
 import 'package:auth/src/network/network.dart';
 import 'package:auth/src/utils/buffer.dart';
+import 'package:flutter/cupertino.dart';
 
 class Logic {
   Network _network;
@@ -16,6 +17,7 @@ class Logic {
     Map user = await _network.getUserFbInfo();
     Buffer.user = FBUser.fromJson(user);
     String photoUrl = user["picture"]["data"]["url"];
-    Buffer.currentImage = await _network.getPhotoFromUrl(photoUrl);
+    List<int> photo = await _network.getPhotoFromUrl(photoUrl);
+    Buffer.currentImage = MemoryImage(photo);
   }
 }

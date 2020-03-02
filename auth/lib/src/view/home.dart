@@ -47,7 +47,7 @@ class _HomeState extends State<Home> {
   Widget _nameField() {
     return Container(
       margin: EdgeInsets.only(
-          left: Buffer.screenWidth / 20, bottom: Buffer.screenHeight / 20),
+          left: Buffer.screenWidth / 40, bottom: Buffer.screenHeight / 20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,15 +70,15 @@ class _HomeState extends State<Home> {
         children: <Widget>[
           GestureDetector(
             child: Container(
-                height: Buffer.screenHeight / 5,
-                width: Buffer.screenHeight / 5,
+                height: Buffer.screenHeight / 6,
+                width: Buffer.screenHeight / 6,
                 margin: EdgeInsets.only(
                     left: Buffer.screenWidth / 20,
                     right: Buffer.screenWidth / 20),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: MemoryImage(Buffer.currentImage),
+                      image: Buffer.currentImage,
                       fit: BoxFit.cover),
                 )),
             onTap: () {

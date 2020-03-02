@@ -1,6 +1,7 @@
 import 'package:auth/src/model/fb_user.dart';
 import 'package:auth/src/styles/colors.dart';
 import 'package:auth/src/styles/text_styles.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 ///Creating static variables.
@@ -14,7 +15,7 @@ class Buffer {
   static FBUser user;
   static String token;
   static List<String> permissions;
-  static List<int> currentImage;
+  static MemoryImage currentImage;
 
   Buffer() {
     screenHeight = 0.0;
@@ -24,7 +25,6 @@ class Buffer {
     textStyles = AppTextStyles();
     user = FBUser();
     token = "";
-    currentImage = List();
     permissions = [
       'email',
       'user_friends',
