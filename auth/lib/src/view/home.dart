@@ -19,14 +19,32 @@ class _HomeState extends State<Home> {
   Widget _appBar() {
     return AppBar(
       backgroundColor: Buffer.colors.primaryColor,
-      title: Text("User profile",
-          style: TextStyle(fontSize: 22, color: Buffer.colors.white)),
+      title: Text("User profile", style: Buffer.textStyles.primaryTextStyle),
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.exit_to_app, color: Buffer.colors.white),
-          onPressed: () {},
+          onPressed: () {
+            _controller.navigateAndReplaceTo("signIn", context);
+          },
         )
       ],
+    );
+  }
+
+  Widget _nameField() {
+    return Container(
+      margin: EdgeInsets.only(
+          left: Buffer.screenWidth / 20, bottom: Buffer.screenHeight / 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text("${Buffer.user.firstName} ${Buffer.user.lastName}",
+              style: Buffer.textStyles.primaryTextStyle),
+          Text("${Buffer.user.homeTown}",
+              style: Buffer.textStyles.secondaryTextStyle),
+        ],
+      ),
     );
   }
 
@@ -45,27 +63,14 @@ class _HomeState extends State<Home> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: NetworkImage(Buffer.user.photoUrl)),
+                      image: MemoryImage(Buffer.currentImage),
+                      fit: BoxFit.cover),
                 )),
             onTap: () {
               _controller.navigateTo("photo", context);
             },
           ),
-          Container(
-            margin: EdgeInsets.only(
-                left: Buffer.screenWidth / 20,
-                bottom: Buffer.screenHeight / 20),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text("${Buffer.user.firstName} ${Buffer.user.lastName}",
-                    style: TextStyle(fontSize: 22, color: Buffer.colors.white)),
-                Text("${Buffer.user.homeTown}",
-                    style: TextStyle(fontSize: 16, color: Buffer.colors.white)),
-              ],
-            ),
-          )
+          _nameField(),
         ],
       ),
     );
@@ -81,8 +86,8 @@ class _HomeState extends State<Home> {
           Container(
             margin: EdgeInsets.only(left: Buffer.screenWidth / 20),
             child: Text(
-              text,
-              style: TextStyle(fontSize: 18, color: Buffer.colors.white),
+              text == "" ? "Not mentioned" : text,
+              style: Buffer.textStyles.secondaryTextStyle,
             ),
           )
         ],
@@ -96,23 +101,24 @@ class _HomeState extends State<Home> {
   }
 
   Widget _birthDay() {
-    Icon gender = Icon(Icons.date_range, color: Buffer.colors.white);
-    return _informationRow(gender, Buffer.user.birthDay);
+    Icon birthDay = Icon(Icons.date_range, color: Buffer.colors.white);
+    return _informationRow(birthDay, Buffer.user.birthDay);
   }
 
   Widget _location() {
-    Icon gender = Icon(Icons.location_on, color: Buffer.colors.white);
-    return _informationRow(gender, Buffer.user.location);
+    Icon location = Icon(Icons.location_on, color: Buffer.colors.white);
+    return _informationRow(location, Buffer.user.location);
   }
 
   Widget _email() {
-    Icon gender = Icon(Icons.email, color: Buffer.colors.white);
-    return _informationRow(gender, Buffer.user.email);
+    Icon email = Icon(Icons.email, color: Buffer.colors.white);
+    return _informationRow(email, Buffer.user.email);
   }
 
   Widget _friends() {
-    Icon gender = Icon(Icons.people_outline, color: Buffer.colors.white);
-    return _informationRow(gender, "${Buffer.user.friendsCount} (friends count)");
+    Icon friends = Icon(Icons.people_outline, color: Buffer.colors.white);
+    return _informationRow(
+        friends, "${Buffer.user.friendsCount} (friends count)");
   }
 
   Widget _body() {

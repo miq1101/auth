@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class AppColors{
+class AppColors {
   AppColors();
   Color primaryColor = Color(0xFF16BFBF);
   Color buttonColor = Color(0xFF1695bf);

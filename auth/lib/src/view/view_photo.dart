@@ -10,9 +10,7 @@ class ViewPhoto extends StatelessWidget {
         color: Buffer.colors.primaryColor,
         height: Buffer.screenHeight,
         width: Buffer.screenWidth,
-        child: PhotoView(imageProvider: NetworkImage(Buffer.user.photoUrl,scale: 1.0),
-          //minScale: 0.2,
-        ),
+        child: PhotoView(imageProvider: MemoryImage(Buffer.currentImage)),
       ),
     );
   }
