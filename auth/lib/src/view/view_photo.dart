@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ViewPhoto extends StatelessWidget {
+
+  ///When clicking on the image in the home page opens it in full screen size.
+  ///It also zooms in and out
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -9,6 +9,9 @@ class Logic {
     _network = Network();
   }
 
+  ///This method requests user info from the network,processes it and keeps in
+  ///[FBUser]'s object
+
   Future<void> getUserFbInfo() async {
     Map user = await _network.getUserFbInfo();
     Buffer.user = FBUser.fromJson(user);

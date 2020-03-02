@@ -1,3 +1,5 @@
+///Creates the user model.
+
 class FBUser {
   String firstName;
   String lastName;
@@ -17,6 +19,9 @@ class FBUser {
       this.location,
       this.homeTown,
       this.friendsCount});
+
+  ///This is a named constructor that gets a [Map] as an argument which adds
+  ///Map info into the [FBUser]'s object.
 
   factory FBUser.fromJson(Map json) => FBUser(
         firstName: json["first_name"] == null ? "" : json["first_name"],

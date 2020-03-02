@@ -1,6 +1,8 @@
 import 'package:auth/src/utils/buffer.dart';
 import 'package:flutter/material.dart';
 
+///Creates all the text styles which are used in app.
+
 class AppTextStyles {
   AppTextStyles();
   TextStyle primaryTextStyle =

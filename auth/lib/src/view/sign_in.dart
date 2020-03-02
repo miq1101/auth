@@ -9,16 +9,21 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> with TickerProviderStateMixin {
-  GlobalKey _globalKey;
+
+
   Animation _animation;
   AnimationController _animationController;
   Controller _controller;
-  FacebookLogin _facebookLogin;
   var facebookLoginResult;
+
+  ///Gets a status if the user was signed in or not
+
   Future<FacebookLoginStatus> facebookLoginStatus() async {
-    facebookLoginResult = await _facebookLogin.logIn(Buffer.permissions);
+    facebookLoginResult = await Buffer.facebookLogin.logIn(Buffer.permissions);
     return facebookLoginResult.status;
   }
+
+  ///Shows this dialog if [facebookLoginStatus] returns error
 
   _showDialog() {
     showDialog<String>(
@@ -43,6 +48,9 @@ class _SignInState extends State<SignIn> with TickerProviderStateMixin {
               ],
             ));
   }
+
+  ///Creates 'sign in' button which depending on the [facebookLoginResult.status]
+  ///decides how to continue.
 
   Widget _signIn() {
     return Container(
@@ -84,6 +92,9 @@ class _SignInState extends State<SignIn> with TickerProviderStateMixin {
     );
   }
 
+  /// The function is being called only once at the beginning and creates
+  /// those necessary variables that are going to be used in the [build] method.
+
   @override
   void initState() {
     _animationController = AnimationController(
@@ -96,15 +107,24 @@ class _SignInState extends State<SignIn> with TickerProviderStateMixin {
                 setState(() {});
               });
     _animationController.forward();
-    _facebookLogin = FacebookLogin();
     _controller = Controller();
     super.initState();
   }
 
+  ///This function is being called when the [context] gets deleted from the
+  ///widgets' tree.It disposes or cancels all the controllers.
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  ///Creates the UI.
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _globalKey,
       backgroundColor: Buffer.colors.primaryColor,
       body: _body(),
     );

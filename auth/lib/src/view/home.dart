@@ -11,10 +11,20 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Controller _controller;
 
+  /// This method requests the controller for user info.
+
   Future<FBUser> _getUserFbInfo() async {
     await _controller.getUserFbInfo();
     return Buffer.user;
   }
+
+  ///Logs out from the app.
+
+  _logout() async {
+    await Buffer.facebookLogin.logOut();
+  }
+
+  ///Creates the upper field that has the 'sign out' button.
 
   Widget _appBar() {
     return AppBar(
@@ -24,12 +34,15 @@ class _HomeState extends State<Home> {
         IconButton(
           icon: Icon(Icons.exit_to_app, color: Buffer.colors.white),
           onPressed: () {
+            _logout();
             _controller.navigateAndReplaceTo("signIn", context);
           },
         )
       ],
     );
   }
+
+  ///Creates widget that shows user's FB first name,last name and hometown.
 
   Widget _nameField() {
     return Container(
@@ -47,6 +60,8 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
+  ///Creates widget that shows user's FB profile picture.
 
   Widget _photoAndName() {
     return Container(
@@ -76,6 +91,9 @@ class _HomeState extends State<Home> {
     );
   }
 
+  ///This method gets icon and text, and creates a widget that is being used in
+  ///[_gender],[_birthDay],[_location],[_email],[_friends] functions.
+
   Widget _informationRow(Icon icon, String text) {
     return Container(
       height: Buffer.screenHeight / 15,
@@ -95,30 +113,40 @@ class _HomeState extends State<Home> {
     );
   }
 
+  ///Creates widget that shows the user's gender.
+
   Widget _gender() {
     Icon gender = Icon(Icons.person, color: Buffer.colors.white);
     return _informationRow(gender, Buffer.user.gender);
   }
+
+  ///Creates widget that shows the user's birthday.
 
   Widget _birthDay() {
     Icon birthDay = Icon(Icons.date_range, color: Buffer.colors.white);
     return _informationRow(birthDay, Buffer.user.birthDay);
   }
 
+  ///Creates widget that shows the user's current location.
+
   Widget _location() {
     Icon location = Icon(Icons.location_on, color: Buffer.colors.white);
     return _informationRow(location, Buffer.user.location);
   }
+
+  ///Creates widget that shows the user's email that was used in FB.
 
   Widget _email() {
     Icon email = Icon(Icons.email, color: Buffer.colors.white);
     return _informationRow(email, Buffer.user.email);
   }
 
+  ///Creates widget that shows the user's FB friends amount.
+
   Widget _friends() {
     Icon friends = Icon(Icons.people_outline, color: Buffer.colors.white);
     return _informationRow(
-        friends, "${Buffer.user.friendsCount} (friends count)");
+        friends, "${Buffer.user.friendsCount} (friends amount)");
   }
 
   Widget _body() {

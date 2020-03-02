@@ -13,6 +13,7 @@ main(List<String> args) {
 class FbAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ///Get width and height of the screen to provide responsive UI.
     Buffer.screenHeight = MediaQueryData.fromWindow(window).size.height;
     Buffer.screenWidth = MediaQueryData.fromWindow(window).size.width;
     return MaterialApp(
