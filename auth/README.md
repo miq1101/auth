@@ -22,13 +22,13 @@ Sign in
 
 Logs in via Facebook after clicking on the Facebook icon.
 
-![Sign in](https://raw.github.com/miq1101/auth/blob/master/auth/assets/sign_in.jpg)
+![Sign in](https://github.com/miq1101/auth/blob/master/auth/assets/sign_in.jpg)
 
 Home Page
 
 Shows user's Facebook info. It opens full-screen image when clicking on the Facebook profile picture. The 'Sign out' button is also in Home Page.
 
-![Home page](https://raw.github.com/miq1101/auth/blob/master/auth/assets/home.jpg)
+![Home page](https://github.com/miq1101/auth/blob/master/auth/assets/home.jpg)
 
 Introduction to the developer
 
