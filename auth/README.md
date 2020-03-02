@@ -57,3 +57,9 @@ Packages
 [http](https://pub.dev/packages/http)
 
 [photo_view](https://pub.dev/packages/photo_view)
+
+Test account
+
+email: galust_tqakibi_sahakyan@tfbnw.net
+
+password: testuser00
